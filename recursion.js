@@ -44,35 +44,91 @@
 
 
 // В этом задании в нашу функцию testArray передаются два массива случайной длины заполненные случайными числами. Вам нужно сосчитать сумму всех элементов обоих массивов и возвратить ее из функции.
-function SumArrayElements(a,b) {
-    let res = 0;
-    for(let i = 0; i < a.length; i++){
-        res += a[i];
-    }
-    for(let i = 0; i < b.length; i++){
-        res += b[i];
-    }
-    return res;
-}
-// let a = [0, 2, 4, 6];
-// let b = [8, 10, 6, 1];
-// let a = [8, 1, 1, 7, 4, 0];
-// let b = [5, 8, 5, 4, 8];
-SumArrayElements([8, 1, 1, 7, 4, 0],[5, 8, 5, 4, 8]);
+// function SumArrayElements(a,b) {
+//     let res = 0;
+//     for(let i = 0; i < a.length; i++){
+//         res += a[i];
+//     }
+//     for(let i = 0; i < b.length; i++){
+//         res += b[i];
+//     }
+//     return res;
+// }
+// // let a = [0, 2, 4, 6];
+// // let b = [8, 10, 6, 1];
+// // let a = [8, 1, 1, 7, 4, 0];
+// // let b = [5, 8, 5, 4, 8];
+// SumArrayElements([8, 1, 1, 7, 4, 0],[5, 8, 5, 4, 8]);
 
 
 // В этом задании в нашу функцию testArray передаются две строки случайной длины и содержания. Вам нужно составить из символов этих строк один массив (каждый символ строки становится отдельным элементом массива), затем добавить первым элементом  массива текстовое значение "Иванов", и вернуть из функции все элементы в обратном порядке, преобразовав в строку. Обратите внимание, что в обратном порядке нужно переставить элементы внутри массива, а данные внутри элементов инвертировать не нужно!
 
-function testArray(a, b) {
-    let str = (a + b);
-    let resArray = str.split('');
-    resArray.unshift("Иванов");
-    resArray = resArray.reverse();
-    let resStr = resArray.join('');
-    return resStr;
+// function testArray(a, b) {
+//     let str = (a + b);
+//     let resArray = str.split('');
+//     resArray.unshift("Иванов");
+//     resArray = resArray.reverse();
+//     let resStr = resArray.join('');
+//     return resStr;
+// }
+//
+// testArray('4326', '297515');
+
+
+
+
+
+//Работа с датой и временем
+// let myDate = new Date() // Mon Apr 25 2022 11:52:42 GMT+0300 (Москва, стандартное время)
+// console.log(myDate);
+// let myDate = new Date("December 14, 1975 12:10:00") //Sun Dec 14 1975 12:10:00 (Москва, стандартное время)
+// console.log(myDate);
+// let myDate = new Date(1989, 6, 14)  //Fri Jul 14 1989 00:00:00 GMT+0400 (Москва, летнее время)
+// console.log(myDate);
+// let myDate = new Date(1998, 6, 14, 11, 20, 00) //Tue Jul 14 1998 11:20:00 GMT+0400 (Москва, летнее время)
+// console.log(myDate);
+
+
+// let myDate = new Date();               // Создаем объект типа Date, в нем оказывается текущая дата
+// myDate.setFullYear(2022, 5, 25);       // Присваиваем ему значение даты
+// myDate.setDate(myDate.getDate() + 10); // Устанавливаем новое значение даты, получив прежнее и прибавив 10.
+// console.log(myDate);//Tue Jul 05 2022 11:57:00 GMT+0300 (Москва, стандартное время)
+
+
+
+// let currentDate = new Date();             // Объявляем переменную для текущей даты
+// let myBirthday = new Date();             // Объявляем переменную для даты Нового Года
+// myBirthday.setFullYear(2022, 7, 4);        // Записываем значение даты для Нового Года - 1 января 2018
+//
+// if (+currentDate == +myBirthday) {
+//     alert("Поздравляем с Днем рождения");
+// } else{
+//     console.log(`Ой!Сегодня только ${currentDate.toLocaleDateString()}!`);
+// }
+
+
+
+
+
+//В этом задании в нашу функцию testDateTime передаются две строки вида "03 November 2017 04:17".
+//Вам нужно превратить строки в даты, сравнить их. Для той, что больше получить день недели и вернуть его из функции.
+//Название дня недели должно быть по-русски, с большой буквы, например: "Понедельник".
+function testDateTime(a, b) {
+    let days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
+        dayOfWeek,
+        dateA = new Date(a),
+        dateB = new Date(b);
+    if(+dateA >= +dateB){
+        dayOfWeek = dateA.getDay();
+    } else {
+        dayOfWeek = dateB.getDay();
+    }
+    return days[dayOfWeek];
 }
 
-testArray('4326', '297515');
+let date1 = '19 October 1909 10:27',
+    date2 = '28 March 1909 00:59';
+testDateTime(date1, date2);
 
 
 
